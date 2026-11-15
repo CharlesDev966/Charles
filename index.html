@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fafafa;--card:#fff;--bd:#e8e8e8;--tx:#0a0a0a;--mu:#737373;--dim:#c2c2c2;--ac:#f97316;--sh:0 1px 2px rgba(0,0,0,.04),0 8px 24px -12px rgba(0,0,0,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--card:#121212;--bd:#262626;--tx:#fafafa;--mu:#a1a1a1;--dim:#4a4a4a;--ac:#ff8a3d;--sh:0 8px 24px -12px rgba(0,0,0,.8);color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#0a0a0a;--card:#121212;--bd:#262626;--tx:#fafafa;--mu:#a1a1a1;--dim:#4a4a4a;--ac:#ff8a3d;--sh:0 8px 24px -12px rgba(0,0,0,.8);color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *{box-sizing:border-box}
@@ -149,10 +148,10 @@ W.forEach(function(w,i){var b=document.createElement("button");b.textContent="St
 var R=["Full-Stack Developer","Web Pentester","Blockchain Developer"],n=0,r=document.getElementById("role");
 if(!matchMedia("(prefers-reduced-motion:reduce)").matches){setInterval(function(){r.classList.add("out");setTimeout(function(){n=(n+1)%R.length;r.textContent=R[n];r.classList.remove("out")},350)},2800)}
 var T=document.documentElement,tt=document.getElementById("tt");
-function cur(){return T.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}
+function cur(){return T.getAttribute("data-theme")||"light"}
 function setT(m){T.setAttribute("data-theme",m);tt.textContent=m==="dark"?"☀️":"🌙";tt.setAttribute("aria-label","Switch to "+(m==="dark"?"light":"dark")+" mode");try{localStorage.setItem("theme",m)}catch(e){}}
 var sv=null;try{sv=localStorage.getItem("theme")}catch(e){}
-setT(sv==="dark"||sv==="light"?sv:cur());tt.onclick=function(){setT(cur()==="dark"?"light":"dark")};
+setT(sv==="dark"?"dark":"light");tt.onclick=function(){setT(cur()==="dark"?"light":"dark")};
 document.documentElement.classList.add("js");
 var E=document.querySelectorAll(".rv");
 if("IntersectionObserver" in window){var o=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");o.unobserve(x.target)}})},{threshold:.12});E.forEach(function(e,i){e.style.transitionDelay=(i%3*90)+"ms";o.observe(e)})}else{E.forEach(function(e){e.classList.add("in")})}
